@@ -140,7 +140,7 @@ export const testimonials = [
 export const companies = [
   {
     id: 1,
-    name: "React",
+    name: "ReactJs",
     img: "/react.svg",
     nameImg: "/cloudName.svg",
   },
@@ -152,7 +152,7 @@ export const companies = [
   },
   {
     id: 3,
-    name: "Node",
+    name: "NodeJs",
     img: "/nodejs.svg",
     nameImg: "/appName.svg",
   },
@@ -223,13 +223,16 @@ export const socialMedia = [
   {
     id: 1,
     img: "/git.svg",
+    link: "https://github.com/Asfandyaar2",
   },
   {
     id: 2,
     img: "/twit.svg",
+    link: "",
   },
   {
     id: 3,
     img: "/link.svg",
+    link: "https://www.linkedin.com/in/asfandyar2/",
   },
 ];
