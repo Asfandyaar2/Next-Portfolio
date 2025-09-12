@@ -57,8 +57,17 @@ const Hero = () => {
           />
 
           <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
-            Hi! I'm Asfand Yar, a Full-Stack Developer specializing in MERN,
-            Next.js, NestJS & PostgreSQL.
+            Hi, I’m Asfand Yar-
+            <b> Full-Stack Developer & Solution Provider </b>
+            specializing in MERN Stack. I help startups and businesses build
+            SaaS platforms, AI-powered chatbots (OpenAI), and automation
+            solutions that drive efficiency and growth.
+          </p>
+          <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
+            With a strong focus on scalable architectures, secure systems, and
+            user-friendly design, I deliver end-to-end solutions — from modern
+            web applications to workflow automation and business process
+            optimization.
           </p>
 
           <Link href="#about">
