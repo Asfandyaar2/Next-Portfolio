@@ -84,7 +84,7 @@ export const projects = [
     des: "An intelligent chatbot platform where users can register and ask any question, receiving real-time answers powered by the Grok API. The system supports continuous learning with an updated trained model for improved accuracy and contextual understanding.",
     img: "/chatbot.png",
     iconLists: ["/re.svg", "node.svg", "db.svg", "/tail.svg", "/ts.svg"],
-    link: "https://signwise.com/",
+    link: "https://chatbot-frontend22.vercel.app/",
   },
   {
     id: 6,
@@ -92,7 +92,7 @@ export const projects = [
     des: "A real-time trading platform where users can register, view live market data through the Alpaca API, and build their own trading strategies on the fly. It offers live analytics, automated trade execution, and strategy testing for smarter investments.",
     img: "/tradingbot.png",
     iconLists: ["/re.svg", "node.svg", "db.svg", "/tail.svg", "/ts.svg"],
-    link: "https://signwise.com/",
+    link: "https://tradingbot-ai2.vercel.app/auth",
   },
 
   {
