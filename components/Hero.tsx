@@ -9,17 +9,17 @@ import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 const Hero = () => {
   return (
     <div className="pb-20 pt-24 min-h-screen flex items-center">
-      <div>
+      <div className="relative overflow-hidden">
         <Spotlight
           className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
           fill="white"
         />
         <Spotlight
-          className="h-[80vh] w-[50vw] top-10 left-full"
+          className="h-[80vh] w-[50vw] top-10 right-0 md:left-full"
           fill="purple"
         />
         <Spotlight
-          className="left-80 top-28 h-[80vh] w-[50vw]"
+          className="right-0 md:left-80 top-28 h-[80vh] w-[50vw]"
           fill="skyblue"
         />
       </div>

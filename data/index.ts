@@ -124,33 +124,21 @@ export const projects = [
 export const testimonials = [
   {
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "Asfand delivered an exceptional SaaS platform for our medical scheduling needs. His expertise in MERN stack and real-time data handling was impressive. The MedUSched platform has streamlined our operations significantly, and his attention to detail in both frontend and backend development exceeded our expectations. Highly recommended for complex web applications.",
+    name: "Dr. Sarah Mitchell",
+    title: "Medical Director at HealthTech Solutions",
   },
   {
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "Working with Asfand on our AI-powered chatbot was a game-changer for our customer service. His integration of OpenAI APIs and continuous learning capabilities transformed our support system. He delivered on time, communicated clearly throughout the project, and provided excellent post-launch support. The chatbot has reduced our response time by 70%.",
+    name: "James Rodriguez",
+    title: "CTO at InnovateCorp",
   },
   {
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
-  },
-  {
-    quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
-  },
-  {
-    quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "Asfand's full-stack development skills are outstanding. He built our trading platform with real-time market data integration and automated strategies. His expertise in Node.js, React, and API integrations made our vision a reality. The platform is scalable, secure, and user-friendly. We've seen a 40% increase in user engagement since launch.",
+    name: "Emily Chen",
+    title: "Founder at TradeFlow Analytics",
   },
 ];
 

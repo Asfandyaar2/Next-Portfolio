@@ -71,8 +71,10 @@
     @apply border-border !scroll-smooth;
   }
 
+  html,
   body {
     @apply bg-background text-foreground;
+    max-width: 100vw;
   }
 
   button {

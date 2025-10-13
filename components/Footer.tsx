@@ -7,7 +7,7 @@ import MagicButton from "./MagicButton";
 
 const Footer = () => {
   return (
-    <footer className="w-full pt-20 pb-10" id="contact">
+    <footer className="w-full pt-20 pb-10 overflow-x-hidden" id="contact">
       {/* background grid */}
       <div className="w-full absolute left-0 -bottom-72 min-h-96">
         <img
@@ -18,7 +18,7 @@ const Footer = () => {
       </div>
 
       <div className="flex flex-col items-center">
-        <motion.h1 
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -28,7 +28,7 @@ const Footer = () => {
           Ready to take <span className="text-purple">your</span> digital
           presence to the next level?
         </motion.h1>
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -60,7 +60,7 @@ const Footer = () => {
         </motion.div>
       </div>
       <div className="flex mt-16 md:flex-row flex-col justify-between items-center">
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
@@ -70,7 +70,7 @@ const Footer = () => {
           Copyright © 2025 Asfand Yar
         </motion.p>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
