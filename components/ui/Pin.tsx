@@ -28,14 +28,21 @@ export const PinContainer = ({
     setTransform("translate(-50%,-50%) rotateX(0deg) scale(1)");
   };
 
+  const handleCardClick = () => {
+    if (href) {
+      window.open(href, "_blank", "noopener,noreferrer");
+    }
+  };
+
   return (
     <div
       className={cn(
-        "relative group/pin z-50  cursor-pointer",
+        "relative group/pin z-50 cursor-pointer transition-all duration-300 hover:scale-[1.02] w-full",
         containerClassName
       )}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      onClick={handleCardClick}
     >
       <div
         style={{
@@ -48,8 +55,7 @@ export const PinContainer = ({
           style={{
             transform: transform,
           }}
-          // remove  bg-black
-          className="absolute left-1/2 p-4 top-1/2  flex justify-start items-start  rounded-2xl  shadow-[0_8px_16px_rgb(0_0_0/0.4)] border border-white/[0.1] group-hover/pin:border-white/[0.2] transition duration-700 overflow-hidden"
+          className="absolute left-1/2 p-6 top-1/2 flex justify-start items-start rounded-3xl shadow-[0_8px_32px_rgb(0_0_0/0.4)] border border-white/[0.1] group-hover/pin:border-white/[0.3] group-hover/pin:shadow-[0_20px_60px_rgb(0_0_0/0.6)] transition-all duration-700 overflow-hidden bg-gradient-to-br from-slate-900/95 to-slate-800/95 backdrop-blur-md"
         >
           <div className={cn(" relative z-50 ", className)}>{children}</div>
         </div>

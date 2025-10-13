@@ -1,5 +1,6 @@
 import { FaLocationArrow } from "react-icons/fa6";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 import MagicButton from "./MagicButton";
 import { Spotlight } from "./ui/Spotlight";
@@ -7,7 +8,7 @@ import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 
 const Hero = () => {
   return (
-    <div className="pb-20 pt-36">
+    <div className="pb-20 pt-24 min-h-screen flex items-center">
       <div>
         <Spotlight
           className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
@@ -40,43 +41,72 @@ const Hero = () => {
         />
       </div>
 
-      <div className="flex justify-center relative my-20 z-10">
+      <div className="flex justify-center relative my-20 z-10 w-full">
         <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
-          <p className="uppercase tracking-widest text-xs text-center text-blue-100 max-w-100">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="uppercase tracking-widest text-xs text-center text-blue-100 max-w-100"
+          >
             MERN | Next.js | NestJS | PostgreSQL | AWS
-          </p>
+          </motion.p>
 
           {/**
            *  Link: https://ui.aceternity.com/components/text-generate-effect
            *
            *  change md:text-6xl, add more responsive code
            */}
-          <TextGenerateEffect
-            words="Shaping Ideas into Interactive Realities"
-            className="text-center text-[40px] md:text-5xl lg:text-6xl"
-          />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.4 }}
+          >
+            <TextGenerateEffect
+              words="Shaping Ideas into Interactive Realities"
+              className="text-center text-[40px] md:text-5xl lg:text-6xl"
+            />
+          </motion.div>
 
-          <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
-            Hi, I’m Asfand Yar-
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl"
+          >
+            Hi, I'm Asfand Yar-
             <b> Full-Stack Developer & Solution Provider </b>
             specializing in MERN Stack. I help startups and businesses build
             SaaS platforms, AI-powered chatbots (OpenAI), and automation
             solutions that drive efficiency and growth.
-          </p>
-          <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl"
+          >
             With a strong focus on scalable architectures, secure systems, and
             user-friendly design, I deliver end-to-end solutions — from modern
             web applications to workflow automation and business process
             optimization.
-          </p>
+          </motion.p>
 
-          <Link href="#about">
-            <MagicButton
-              title="Discover the Wonders"
-              icon={<FaLocationArrow />}
-              position="right"
-            />
-          </Link>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Link href="#about">
+              <MagicButton
+                title="Discover the Wonders"
+                icon={<FaLocationArrow />}
+                position="right"
+              />
+            </Link>
+          </motion.div>
         </div>
       </div>
     </div>
