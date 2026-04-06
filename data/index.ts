@@ -9,7 +9,8 @@ export const navItems = [
 export const gridItems = [
   {
     id: 1,
-    title: "I prioritize building autonomous AI systems that solve real-world problems.",
+    title:
+      "I prioritize building autonomous AI systems that solve real-world problems.",
     description: "Solution-Oriented",
     className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
     imgClassName: "w-full h-full opacity-50",
@@ -39,7 +40,8 @@ export const gridItems = [
   },
   {
     id: 4,
-    title: "Passionate about MCP (Model Context Protocol) and Agentic Workflows.",
+    title:
+      "Passionate about MCP (Model Context Protocol) and Agentic Workflows.",
     description: "Forward Thinking",
     className: "lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
@@ -105,14 +107,54 @@ export const projects = [
 ];
 
 export const skills = [
-  { name: "LLMs & RAG (GPT-4, Claude)", progress: 95, category: "AI Core", icon: "Brain" },
-  { name: "React & Next.js 14", progress: 92, category: "Frontend", icon: "Code" },
-  { name: "Node.js & NestJS", progress: 88, category: "Backend", icon: "Network" },
-  { name: "PostgreSQL & MongoDB", progress: 85, category: "Database", icon: "Database" },
-  { name: "Python & Automation (n8n)", progress: 90, category: "Automation", icon: "Workflow" },
-  { name: "AI Agents & MCP Servers", progress: 85, category: "AI Ops", icon: "Robot" },
-  { name: "Express & REST / GraphQL", progress: 88, category: "Web APIs", icon: "Link" },
-  { name: "AWS & Cloud (GCP/Azure)", progress: 80, category: "Cloud", icon: "Cloud" },
+  {
+    name: "LLMs & RAG (GPT-4, Claude)",
+    progress: 95,
+    category: "AI Core",
+    icon: "Brain",
+  },
+  {
+    name: "React & Next.js 14",
+    progress: 92,
+    category: "Frontend",
+    icon: "Code",
+  },
+  {
+    name: "Node.js & NestJS",
+    progress: 88,
+    category: "Backend",
+    icon: "Network",
+  },
+  {
+    name: "PostgreSQL & MongoDB",
+    progress: 85,
+    category: "Database",
+    icon: "Database",
+  },
+  {
+    name: "Python & Automation (n8n)",
+    progress: 90,
+    category: "Automation",
+    icon: "Workflow",
+  },
+  {
+    name: "AI Agents & MCP Servers",
+    progress: 85,
+    category: "AI Ops",
+    icon: "Robot",
+  },
+  {
+    name: "Express & REST / GraphQL",
+    progress: 88,
+    category: "Web APIs",
+    icon: "Link",
+  },
+  {
+    name: "AWS & Cloud (GCP/Azure)",
+    progress: 80,
+    category: "Cloud",
+    icon: "Cloud",
+  },
 ];
 
 export const timelineData = [
@@ -123,8 +165,8 @@ export const timelineData = [
     achievements: [
       "Architecting end-to-end AI systems with Next.js, NestJS, and advanced LLM orchestrators.",
       "Developing sophisticated agentic workflows that integrate directly with enterprise ERPs.",
-      "Leading technical strategy for full-stack AI integrations across multiple platforms."
-    ]
+      "Leading technical strategy for full-stack AI integrations across multiple platforms.",
+    ],
   },
   {
     company: "CloudFlow Systems",
@@ -133,8 +175,8 @@ export const timelineData = [
     achievements: [
       "Built and optimized full-stack cloud infrastructures to support high-scale AI inference workloads.",
       "Engineered real-time data flow pipelines for large-scale sentiment analysis engines.",
-      "Refined cloud environments to increase system reliability and reduce operational overhead."
-    ]
+      "Refined cloud environments to increase system reliability and reduce operational overhead.",
+    ],
   },
   {
     company: "ZypZap Solutions",
@@ -143,9 +185,9 @@ export const timelineData = [
     achievements: [
       "Developed high-performance SaaS applications with deeply integrated GPT capabilities.",
       "Mastered the transition from monolithic architectures to scalable, AI-ready microservices.",
-      "Optimized front-to-back performance for AI-rich user interfaces."
-    ]
-  }
+      "Optimized front-to-back performance for AI-rich user interfaces.",
+    ],
+  },
 ];
 
 export const socialMedia = [
@@ -163,5 +205,5 @@ export const socialMedia = [
     id: 3,
     img: "/twit.svg",
     link: "https://twitter.com/",
-  }
+  },
 ];
