@@ -9,8 +9,7 @@ export const navItems = [
 export const gridItems = [
   {
     id: 1,
-    title:
-      "I prioritize building autonomous AI systems that solve real-world problems.",
+    title: "I prioritize building autonomous AI systems that solve real-world problems.",
     description: "Solution-Oriented",
     className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
     imgClassName: "w-full h-full opacity-50",
@@ -40,8 +39,7 @@ export const gridItems = [
   },
   {
     id: 4,
-    title:
-      "Passionate about MCP (Model Context Protocol) and Agentic Workflows.",
+    title: "Passionate about MCP (Model Context Protocol) and Agentic Workflows.",
     description: "Forward Thinking",
     className: "lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
@@ -207,3 +205,8 @@ export const socialMedia = [
     link: "https://twitter.com/",
   },
 ];
+
+// Compatibility exports for legacy components
+export const testimonials = [] as any[];
+export const companies = [] as any[];
+export const workExperience = [] as any[];
