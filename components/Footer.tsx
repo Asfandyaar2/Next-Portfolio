@@ -7,92 +7,96 @@ import MagicButton from "./MagicButton";
 
 const Footer = () => {
   return (
-    <footer className="w-full pt-20 pb-10 overflow-x-hidden" id="contact">
-      {/* background grid */}
-      <div className="w-full absolute left-0 -bottom-72 min-h-96">
-        <img
-          src="/footer-grid.svg"
-          alt="grid"
-          className="w-full h-full opacity-50 "
-        />
-      </div>
-
-      <div className="flex flex-col items-center">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="heading lg:max-w-[45vw]"
-        >
-          Ready to take <span className="text-purple">your</span> digital
-          presence to the next level?
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="text-white-200 md:mt-10 my-5 text-center"
-        >
-          Reach out to me today and let&apos;s discuss how I can help you
-          achieve your goals.
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <a
-            href="https://www.linkedin.com/in/asfandyar2/"
-            target="_blank"
-            rel="noopener noreferrer"
+    <footer className="w-full pt-40 pb-20 bg-deep-navy relative overflow-hidden" id="contact">
+      {/* Background Decor */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-1 bg-gradient-to-r from-transparent via-electric-violet/50 to-transparent opacity-20" />
+      
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-32">
+          
+          {/* Left: Branding & Bio & Socials */}
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="flex-1 space-y-12"
           >
-            <MagicButton
-              title="Let's get in touch"
-              icon={<FaLocationArrow />}
-              position="right"
-            />
-          </a>
-        </motion.div>
-      </div>
-      <div className="flex mt-16 md:flex-row flex-col justify-between items-center">
-        <motion.p
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="md:text-base text-sm md:font-normal font-light"
-        >
-          Copyright © 2025 Asfand Yar
-        </motion.p>
+            <div className="space-y-6">
+              <h2 className="text-4xl md:text-5xl font-heading font-bold text-soft-white">
+                Let&apos;s Build <span className="text-electric-violet">Future</span> Together.
+              </h2>
+              <p className="text-soft-white/50 text-xl font-sans lg:max-w-md">
+                Developing innovative, scalable AI solutions and full-stack ecosystems that redefine digital interaction.
+              </p>
+            </div>
 
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="flex items-center md:gap-3 gap-6"
-        >
-          {socialMedia.map((info, index) => (
-            <motion.div
-              key={info.id}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.2, rotate: 5 }}
-              whileTap={{ scale: 0.9 }}
-              className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-black-300 transition-all duration-300 hover:border-purple-400"
-              onClick={() => window.open(info.link, "_blank")}
-            >
-              <img src={info.img} alt="icons" width={20} height={20} />
-            </motion.div>
-          ))}
-        </motion.div>
+            <div className="flex items-center gap-6">
+              {socialMedia.map((social) => (
+                <a 
+                  key={social.id}
+                  href={social.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-14 h-14 glass flex justify-center items-center rounded-2xl border border-soft-white/10 text-soft-white hover:text-electric-violet hover:border-electric-violet/50 hover:-translate-y-2 transition-all duration-300"
+                >
+                  <img src={social.img} alt="social" className="w-7 h-7 object-contain" />
+                </a>
+              ))}
+            </div>
+
+            <div className="flex flex-col gap-2 pt-10 text-soft-white/30 text-sm font-sans">
+              <span>Copyright © 2026 Asfandyar</span>
+              <span>All rights reserved — Neural Dynamics</span>
+            </div>
+          </motion.div>
+
+          {/* Right: Contact Form */}
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="flex-1"
+          >
+            <form className="glass p-10 md:p-12 rounded-[2rem] border border-white/5 space-y-8">
+              <div className="space-y-6">
+                <div className="space-y-2">
+                  <label htmlFor="name" className="text-soft-white font-heading font-bold text-sm tracking-widest uppercase">Your Identity</label>
+                  <input 
+                    type="text" 
+                    id="name"
+                    placeholder="Full Name / Brand"
+                    className="w-full bg-deep-navy/50 border border-white/10 rounded-2xl p-5 text-soft-white focus:outline-none focus:border-electric-violet focus:ring-1 focus:ring-electric-violet/50 transition-all font-sans"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label htmlFor="email" className="text-soft-white font-heading font-bold text-sm tracking-widest uppercase">Access Point</label>
+                  <input 
+                    type="email" 
+                    id="email"
+                    placeholder="email@example.com"
+                    className="w-full bg-deep-navy/50 border border-white/10 rounded-2xl p-5 text-soft-white focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan/50 transition-all font-sans"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label htmlFor="message" className="text-soft-white font-heading font-bold text-sm tracking-widest uppercase">Intel Submission</label>
+                  <textarea 
+                    id="message"
+                    rows={4}
+                    placeholder="Project details, automation needs, or partnership requests..."
+                    className="w-full bg-deep-navy/50 border border-white/10 rounded-2xl p-5 text-soft-white focus:outline-none focus:border-electric-violet focus:ring-1 focus:ring-electric-violet/50 transition-all font-sans resize-none"
+                  />
+                </div>
+              </div>
+              
+              <button 
+                type="submit"
+                className="w-full py-5 bg-electric-violet text-white font-bold rounded-2xl btn-glow shadow-xl active:scale-95 transition-all text-xl font-heading"
+              >
+                Launch Communication
+              </button>
+            </form>
+          </motion.div>
+        </div>
       </div>
     </footer>
   );

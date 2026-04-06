@@ -17,15 +17,43 @@ interface HeaderProps {
 export const Header = ({ navItems, className }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
+    const observerOptions = {
+      root: null,
+      rootMargin: "-20% 0px -70% 0px",
+      threshold: 0,
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    
+    // Observe all sections that have an ID corresponding to nav items
+    navItems.forEach((item) => {
+      if (item.link.startsWith("#")) {
+        const section = document.getElementById(item.link.substring(1));
+        if (section) observer.observe(section);
+      }
+    });
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      observer.disconnect();
+    };
+  }, [navItems]);
 
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -39,7 +67,7 @@ export const Header = ({ navItems, className }: HeaderProps) => {
       const targetElement = document.getElementById(targetId);
 
       if (targetElement) {
-        const offsetTop = targetElement.offsetTop - 80; // Account for header height
+        const offsetTop = targetElement.offsetTop - 80;
         window.scrollTo({
           top: offsetTop,
           behavior: "smooth",
@@ -58,13 +86,13 @@ export const Header = ({ navItems, className }: HeaderProps) => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-black/80 backdrop-blur-md border-b border-white/10"
+          ? "bg-deep-navy/80 backdrop-blur-xl border-b border-white/5"
           : "bg-transparent",
         className
       )}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -72,27 +100,38 @@ export const Header = ({ navItems, className }: HeaderProps) => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex-shrink-0"
           >
-            <a href="#" className="text-2xl font-bold text-white">
-              Asfand Yar
+            <a href="#" className="font-heading font-bold text-2xl tracking-tighter text-soft-white group">
+              <span className="text-electric-violet">Asfand</span>
+              <span className="group-hover:text-neon-cyan transition-colors">yar</span>
             </a>
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {navItems.map((item, index) => (
-              <motion.a
-                key={item.name}
-                href={item.link}
-                onClick={(e) => handleNavClick(e, item.link)}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                className="relative text-gray-300 hover:text-white transition-colors duration-300 group"
-              >
-                {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-500 transition-all duration-300 group-hover:w-full"></span>
-              </motion.a>
-            ))}
+          <nav className="hidden md:flex items-center space-x-12">
+            {navItems.map((item, index) => {
+              const isActive = activeSection === item.link.substring(1);
+              return (
+                <motion.a
+                  key={item.name}
+                  href={item.link}
+                  onClick={(e) => handleNavClick(e, item.link)}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+                  className={cn(
+                    "relative text-sm font-heading font-bold uppercase tracking-widest transition-all duration-300 group",
+                    isActive ? "text-neon-cyan" : "text-soft-white/60 hover:text-soft-white"
+                  )}
+                >
+                  {item.name}
+                  {/* Active Indicator */}
+                  <span className={cn(
+                    "absolute -bottom-2 left-0 h-0.5 bg-neon-cyan transition-all duration-300",
+                    isActive ? "w-full" : "w-0 group-hover:w-full"
+                  )}></span>
+                </motion.a>
+              );
+            })}
           </nav>
 
           {/* Mobile Menu Button */}
@@ -100,24 +139,27 @@ export const Header = ({ navItems, className }: HeaderProps) => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="md:hidden text-white focus:outline-none"
+            className="md:hidden text-soft-white focus:outline-none"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            <div className="w-6 h-6 flex flex-col justify-center space-y-1">
+            <div className="w-6 h-6 flex flex-col justify-center space-y-1.5">
               <span
-                className={`block h-0.5 w-6 bg-white transition-all duration-300 ${
-                  isMobileMenuOpen ? "rotate-45 translate-y-1.5" : ""
-                }`}
+                className={cn(
+                  "block h-0.5 w-6 bg-soft-white transition-all duration-300",
+                  isMobileMenuOpen ? "rotate-45 translate-y-2 bg-neon-cyan" : ""
+                )}
               ></span>
               <span
-                className={`block h-0.5 w-6 bg-white transition-all duration-300 ${
+                className={cn(
+                  "block h-0.5 w-4 bg-soft-white transition-all duration-300 ml-auto",
                   isMobileMenuOpen ? "opacity-0" : ""
-                }`}
+                )}
               ></span>
               <span
-                className={`block h-0.5 w-6 bg-white transition-all duration-300 ${
-                  isMobileMenuOpen ? "-rotate-45 -translate-y-1.5" : ""
-                }`}
+                className={cn(
+                  "block h-0.5 w-6 bg-soft-white transition-all duration-300",
+                  isMobileMenuOpen ? "-rotate-45 -translate-y-2 bg-neon-cyan" : ""
+                )}
               ></span>
             </div>
           </motion.button>
@@ -131,22 +173,28 @@ export const Header = ({ navItems, className }: HeaderProps) => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden bg-black/95 backdrop-blur-md border-t border-white/10"
+              className="md:hidden bg-deep-navy/95 backdrop-blur-2xl border-t border-white/5 overflow-hidden"
             >
-              <div className="px-2 pt-2 pb-3 space-y-1">
-                {navItems.map((item, index) => (
-                  <motion.a
-                    key={item.name}
-                    href={item.link}
-                    onClick={(e) => handleNavClick(e, item.link)}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
-                    className="block px-3 py-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-md transition-colors duration-300"
-                  >
-                    {item.name}
-                  </motion.a>
-                ))}
+              <div className="px-6 py-10 space-y-6">
+                {navItems.map((item, index) => {
+                  const isActive = activeSection === item.link.substring(1);
+                  return (
+                    <motion.a
+                      key={item.name}
+                      href={item.link}
+                      onClick={(e) => handleNavClick(e, item.link)}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                      className={cn(
+                        "block text-2xl font-heading font-bold uppercase tracking-tighter transition-all duration-300",
+                        isActive ? "text-neon-cyan ml-4" : "text-soft-white/40 hover:text-soft-white"
+                      )}
+                    >
+                      {item.name}
+                    </motion.a>
+                  );
+                })}
               </div>
             </motion.div>
           )}

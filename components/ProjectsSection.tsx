@@ -12,12 +12,12 @@ export const ProjectsSection = () => {
     >
       {/* Animated Background */}
       <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]"></div>
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-blue-500/5"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-electric-violet/5 via-transparent to-neon-cyan/5"></div>
 
       {/* Floating Orbs */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          className="absolute top-20 left-10 w-32 h-32 bg-purple-500/10 rounded-full blur-xl"
+          className="absolute top-20 left-10 w-32 h-32 bg-electric-violet/10 rounded-full blur-xl pill-glow"
           animate={{
             x: [0, 100, 0],
             y: [0, -50, 0],
@@ -30,7 +30,7 @@ export const ProjectsSection = () => {
           }}
         />
         <motion.div
-          className="absolute bottom-20 right-10 w-40 h-40 bg-blue-500/10 rounded-full blur-xl"
+          className="absolute bottom-20 right-10 w-40 h-40 bg-neon-cyan/10 rounded-full blur-xl"
           animate={{
             x: [0, -80, 0],
             y: [0, 60, 0],
@@ -55,21 +55,21 @@ export const ProjectsSection = () => {
           className="relative"
         >
           <motion.h2
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
+            className="heading mb-6"
             whileInView={{
               backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
             }}
-            transition={{ duration: 3, repeat: Infinity }}
+            transition={{ duration: 5, repeat: Infinity }}
             style={{
               background:
-                "linear-gradient(45deg, #ffffff, #8b5cf6, #3b82f6, #ffffff)",
+                "linear-gradient(45deg, #F8FAFC, #7C3AED, #06B6D4, #F8FAFC)",
               backgroundSize: "300% 300%",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
             }}
           >
-            Recent Projects
+            AI & Automation Showcase
           </motion.h2>
 
           <motion.p
@@ -77,10 +77,10 @@ export const ProjectsSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-xl text-gray-300 max-w-2xl mx-auto"
+            className="subheading text-soft-white/70"
           >
-            A showcase of innovative solutions and creative implementations that
-            demonstrate my expertise in modern web development.
+            Deploying agentic frameworks and autonomous workflows that redefine 
+            operational excellence and scalability.
           </motion.p>
         </motion.div>
       </div>
@@ -95,7 +95,7 @@ export const ProjectsSection = () => {
       </div>
 
       {/* Bottom Decoration */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black-100 to-transparent"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-deep-navy to-transparent"></div>
     </section>
   );
 };

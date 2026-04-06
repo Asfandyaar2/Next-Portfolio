@@ -42,12 +42,12 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
       <motion.div
         whileHover={{ y: -8 }}
         transition={{ duration: 0.3, ease: "easeOut" }}
-        className="relative bg-gradient-to-br from-slate-900/90 to-slate-800/90 backdrop-blur-xl rounded-3xl p-6 border border-white/10 hover:border-purple-500/30 transition-all duration-500 cursor-pointer overflow-hidden"
+        className="relative glass rounded-3xl p-6 border border-white/10 hover:border-electric-violet/30 transition-all duration-500 cursor-pointer overflow-hidden"
         onClick={handleCardClick}
       >
         {/* Animated Background Gradient */}
         <motion.div
-          className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-blue-500/10 rounded-3xl"
+          className="absolute inset-0 bg-gradient-to-br from-electric-violet/10 via-transparent to-neon-cyan/10 rounded-3xl"
           animate={{
             opacity: isHovered ? 1 : 0,
           }}
@@ -59,7 +59,7 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
           {[...Array(6)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-1 h-1 bg-purple-400 rounded-full"
+              className="absolute w-1 h-1 bg-neon-cyan/40 rounded-full"
               animate={{
                 x: [0, Math.random() * 100 - 50],
                 y: [0, Math.random() * 100 - 50],
@@ -82,14 +82,14 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
         {/* Project Image */}
         <div className="relative mb-6 overflow-hidden rounded-2xl">
           <motion.div
-            className="relative h-48 bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden"
+            className="relative h-48 bg-deep-navy/50 rounded-2xl overflow-hidden border border-white/5"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.4 }}
           >
             <img
-              src="/bg.png"
+              src="/grid.svg"
               alt="background"
-              className="absolute inset-0 w-full h-full object-cover opacity-20"
+              className="absolute inset-0 w-full h-full object-cover opacity-10"
             />
             <motion.img
               src={project.img}
@@ -99,13 +99,13 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
               transition={{ duration: 0.4 }}
             />
 
-            {/* Subtle Hover Effect - No Overlay */}
+            {/* Subtle Hover Effect */}
             <motion.div
               className="absolute inset-0 rounded-2xl"
               animate={{
                 boxShadow: isHovered
-                  ? "0 0 30px rgba(139, 92, 246, 0.3), inset 0 0 20px rgba(59, 130, 246, 0.1)"
-                  : "0 0 0px rgba(139, 92, 246, 0), inset 0 0 0px rgba(59, 130, 246, 0)",
+                  ? "0 0 30px rgba(124, 58, 237, 0.3), inset 0 0 20px rgba(6, 182, 212, 0.1)"
+                  : "0 0 0px rgba(124, 58, 237, 0), inset 0 0 0px rgba(6, 182, 212, 0)",
               }}
               transition={{ duration: 0.4 }}
             />
@@ -115,7 +115,7 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
               className="absolute inset-0 rounded-2xl border-2 border-transparent"
               animate={{
                 background: isHovered
-                  ? "linear-gradient(45deg, #8b5cf6, #3b82f6, #8b5cf6) border-box"
+                  ? "linear-gradient(45deg, #7C3AED, #06B6D4, #7C3AED) border-box"
                   : "transparent",
               }}
               transition={{ duration: 0.5 }}
@@ -131,7 +131,7 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
         <div className="relative z-10 space-y-4">
           {/* Title */}
           <motion.h3
-            className="text-xl md:text-2xl font-bold text-white group-hover:text-purple-400 transition-colors duration-300"
+            className="text-xl md:text-2xl font-bold font-heading text-white group-hover:text-neon-cyan transition-colors duration-300"
             whileHover={{ x: 5 }}
             transition={{ duration: 0.2 }}
           >
@@ -140,8 +140,8 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
 
           {/* Description */}
           <motion.p
-            className="text-gray-300 text-sm md:text-base leading-relaxed line-clamp-3"
-            animate={{ color: isHovered ? "#e2e8f0" : "#cbd5e1" }}
+            className="text-soft-white/70 text-sm md:text-base leading-relaxed line-clamp-3"
+            animate={{ color: isHovered ? "#F8FAFC" : "#BEC1DD" }}
             transition={{ duration: 0.3 }}
           >
             {project.des}
@@ -165,13 +165,13 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
                     rotate: 360,
                     y: -5,
                   }}
-                  className="relative border border-white/20 rounded-full bg-black/50 backdrop-blur-sm w-10 h-10 flex justify-center items-center hover:border-purple-400 transition-all duration-300"
+                  className="relative border border-white/20 rounded-full bg-black/50 backdrop-blur-sm w-10 h-10 flex justify-center items-center hover:border-neon-cyan transition-all duration-300"
                 >
-                  <img src={icon} alt="tech" className="w-5 h-5" />
+                  <img src={icon} alt="tech" className="w-5 h-5 object-contain" />
 
                   {/* Tech Icon Glow Effect */}
                   <motion.div
-                    className="absolute inset-0 rounded-full bg-purple-400/20"
+                    className="absolute inset-0 rounded-full bg-neon-cyan/20"
                     animate={{
                       scale: isHovered ? [1, 1.5, 1] : 1,
                       opacity: isHovered ? [0, 0.5, 0] : 0,
@@ -184,13 +184,13 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
 
             {/* View Project Button */}
             <motion.div
-              className="flex items-center space-x-2 text-purple-400 hover:text-white transition-colors duration-300"
+              className="flex items-center space-x-2 text-neon-cyan hover:text-white transition-colors duration-300"
               whileHover={{ x: 8, scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.2 }}
             >
               <span className="text-sm md:text-base font-medium">
-                View Project
+                Live Demo
               </span>
               <motion.div
                 animate={{ rotate: isHovered ? 45 : 0 }}
@@ -207,7 +207,7 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
           className="absolute inset-0 rounded-3xl border-2 border-transparent"
           animate={{
             background: isHovered
-              ? "linear-gradient(45deg, #8b5cf6, #3b82f6, #8b5cf6) border-box"
+              ? "linear-gradient(45deg, #7C3AED, #06B6D4, #7C3AED) border-box"
               : "transparent",
           }}
           transition={{ duration: 0.5 }}

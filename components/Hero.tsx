@@ -1,115 +1,141 @@
-import { FaLocationArrow } from "react-icons/fa6";
-import Link from "next/link";
+"use client";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { FaArrowRight } from "react-icons/fa6";
 
-import MagicButton from "./MagicButton";
-import { Spotlight } from "./ui/Spotlight";
-import { TextGenerateEffect } from "./ui/TextGenerateEffect";
+const roles = ["AI Engineer", "Automation Architect", "Full Stack Developer"];
 
 const Hero = () => {
+  const [index, setIndex] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [speed, setSpeed] = useState(150);
+
+  useEffect(() => {
+    const handleType = () => {
+      const currentRole = roles[index];
+      setDisplayText(
+        isDeleting
+          ? currentRole.substring(0, displayText.length - 1)
+          : currentRole.substring(0, displayText.length + 1)
+      );
+
+      if (!isDeleting && displayText === currentRole) {
+        setSpeed(2000); // Wait at end
+        setIsDeleting(true);
+      } else if (isDeleting && displayText === "") {
+        setIsDeleting(false);
+        setIndex((prev) => (prev + 1) % roles.length);
+        setSpeed(150);
+      } else {
+        setSpeed(isDeleting ? 75 : 150);
+      }
+    };
+
+    const timer = setTimeout(handleType, speed);
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting, index, speed]);
+
   return (
-    <div className="pb-20 pt-24 min-h-screen flex items-center">
-      <div className="relative overflow-hidden">
-        <Spotlight
-          className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
-          fill="white"
-        />
-        <Spotlight
-          className="h-[80vh] w-[50vw] top-10 right-0 md:left-full"
-          fill="purple"
-        />
-        <Spotlight
-          className="right-0 md:left-80 top-28 h-[80vh] w-[50vw]"
-          fill="skyblue"
-        />
-      </div>
-
-      {/**
-       *  UI: grid
-       *  change bg color to bg-black-100 and reduce grid color from
-       *  0.2 to 0.03
-       */}
-      <div
-        className="h-screen w-full dark:bg-black-100 bg-white dark:bg-grid-white/[0.03] bg-grid-black-100/[0.2]
-       absolute top-0 left-0 flex items-center justify-center"
-      >
-        {/* Radial gradient for the container to give a faded look */}
-        <div
-          // chnage the bg to bg-black-100, so it matches the bg color and will blend in
-          className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black-100
-         bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"
-        />
-      </div>
-
-      <div className="flex justify-center relative my-20 z-10 w-full">
-        <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="uppercase tracking-widest text-xs text-center text-blue-100 max-w-100"
-          >
-            MERN | Next.js | NestJS | PostgreSQL | AWS
-          </motion.p>
-
-          {/**
-           *  Link: https://ui.aceternity.com/components/text-generate-effect
-           *
-           *  change md:text-6xl, add more responsive code
-           */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.4 }}
-          >
-            <TextGenerateEffect
-              words="Shaping Ideas into Interactive Realities"
-              className="text-center text-[40px] md:text-5xl lg:text-6xl"
-            />
-          </motion.div>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl"
-          >
-            Hi, I'm Asfand Yar-
-            <b> Full-Stack Developer & Solution Provider </b>
-            specializing in MERN Stack. I help startups and businesses build
-            SaaS platforms, AI-powered chatbots (OpenAI), and automation
-            solutions that drive efficiency and growth.
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl"
-          >
-            With a strong focus on scalable architectures, secure systems, and
-            user-friendly design, I deliver end-to-end solutions — from modern
-            web applications to workflow automation and business process
-            optimization.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Link href="#about">
-              <MagicButton
-                title="Discover the Wonders"
-                icon={<FaLocationArrow />}
-                position="right"
+    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-deep-navy" id="home">
+      {/* Neural Network SVG Background - CSS based animations */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
+        <svg
+          className="w-full h-full"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="xMidYMid slice"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g className="neural-nodes">
+            {[...Array(30)].map((_, i) => (
+              <circle
+                key={i}
+                cx={Math.random() * 100}
+                cy={Math.random() * 100}
+                r="0.4"
+                fill="#06B6D4"
+                className="animate-pulse"
+                style={{ animationDelay: `${Math.random() * 5}s`, opacity: 0.6 }}
               />
-            </Link>
-          </motion.div>
-        </div>
+            ))}
+          </g>
+          <g className="neural-connections">
+            {[...Array(20)].map((_, i) => (
+              <line
+                key={i}
+                x1={Math.random() * 100}
+                y1={Math.random() * 100}
+                x2={Math.random() * 100}
+                y2={Math.random() * 100}
+                stroke="#7C3AED"
+                strokeWidth="0.05"
+                className="opacity-20"
+              />
+            ))}
+          </g>
+        </svg>
       </div>
-    </div>
+
+      <div className="absolute inset-0 noise-texture"></div>
+
+      <div className="relative z-10 container flex flex-col items-center justify-center text-center px-4">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="uppercase tracking-[0.3em] text-xs md:text-sm text-neon-cyan mb-4 font-heading"
+        >
+          Architecting the Future with Intelligence
+        </motion.p>
+
+        <motion.h1
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-soft-white mb-6 leading-tight"
+        >
+          Hi, I&apos;m <span className="text-electric-violet">Asfandyar</span>
+        </motion.h1>
+
+        <div className="h-20 md:h-24 flex items-center mb-10">
+          <span className="text-2xl md:text-4xl lg:text-5xl font-heading font-semibold text-soft-white/80">
+            <span className="text-neon-cyan inline-block border-r-4 border-neon-cyan pr-2 animate-blink min-w-[280px] text-center">
+              {displayText}
+            </span>
+          </span>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="flex flex-col items-center justify-center gap-6 sm:flex-row mt-4"
+        >
+          <Link href="#projects">
+            <button className="group relative px-10 py-5 bg-electric-violet text-white font-bold rounded-xl btn-glow transition-all hover:scale-105 active:scale-95 flex items-center gap-3">
+              Explore Neural Showcase
+              <FaArrowRight className="transition-transform group-hover:translate-x-1" />
+            </button>
+          </Link>
+          <Link href="#contact">
+            <button className="px-10 py-5 border border-white/10 glass rounded-xl text-soft-white font-semibold transition-all hover:bg-white/5 hover:border-white/20 hover:scale-105">
+              Discuss Automation
+            </button>
+          </Link>
+        </motion.div>
+      </div>
+      
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 1 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+      >
+        <span className="text-soft-white/30 text-xs uppercase tracking-widest">Scroll</span>
+        <div className="w-1 h-12 bg-gradient-to-b from-electric-violet to-transparent rounded-full animate-bounce"></div>
+      </motion.div>
+    </section>
   );
 };
 
