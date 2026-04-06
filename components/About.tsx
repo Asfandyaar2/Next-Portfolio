@@ -34,7 +34,7 @@ const About = () => {
               
               <div className="w-full h-full rounded-full overflow-hidden border-4 border-soft-white/10 glass relative z-10 shadow-2xl">
                 <img 
-                  src="/avatar.png" 
+                  src="/asfand.png" 
                   alt="Asfandyar"
                   className="w-full h-full object-cover"
                   onError={(e) => {
