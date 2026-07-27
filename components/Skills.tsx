@@ -32,7 +32,10 @@ const iconMap: Record<string, LucideIcon> = {
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-12 md:py-20 bg-background relative overflow-hidden">
+    <section
+      id="skills"
+      className="py-12 md:py-20 bg-background relative overflow-hidden"
+    >
       <Sparkles className="absolute top-16 right-10 w-7 h-7 text-primary/20 pointer-events-none hidden sm:block" />
       <div className="container mx-auto px-6">
         <motion.h2
@@ -45,10 +48,11 @@ const Skills = () => {
           Skills & <span className="text-primary">Stack</span>
         </motion.h2>
         <p className="subheading mb-8">
-          A full-stack toolkit built for shipping production-grade AI systems end to end.
+          A full-stack toolkit built for shipping production-grade AI systems
+          end to end.
         </p>
 
-        <div className="max-w-4xl mx-auto glass glow-card rounded-3xl divide-y divide-border overflow-hidden">
+        <div className=" mx-auto glass glow-card rounded-3xl divide-y divide-border overflow-hidden">
           {skillCategories.map((skill, index) => {
             const Icon = iconMap[skill.icon] ?? Code2;
 
