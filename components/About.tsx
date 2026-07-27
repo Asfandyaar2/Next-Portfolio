@@ -1,86 +1,84 @@
 "use client";
+import Image from "next/image";
 import { motion } from "framer-motion";
+import { type LucideIcon, Calendar, Users } from "lucide-react";
 
-const skills = [
-  { name: "Continuous Learning", progress: 95 },
-  { name: "Problem Solving", progress: 90 },
-  { name: "System Architecture", progress: 85 }
-];
+import { personal, quickStats } from "@/data";
+
+const statIcons: Record<string, LucideIcon> = {
+  Calendar,
+  Users,
+};
 
 const About = () => {
   return (
-    <section id="about" className="py-20 bg-deep-navy relative overflow-hidden">
+    <section id="about" className="py-12 md:py-20 bg-background relative overflow-hidden">
       <div className="container mx-auto px-6">
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="heading mb-16"
+          className="heading mb-8"
         >
-          Behind the <span className="text-electric-violet">Intelligence</span>
+          About <span className="text-primary">Me</span>
         </motion.h2>
 
         <div className="flex flex-col lg:flex-row items-center gap-16">
-          {/* Left: Avatar with Glowing Ring */}
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
             className="flex flex-col items-center gap-6 lg:w-1/3"
           >
-            <div className="relative w-64 h-64">
-              <div className="absolute inset-[-10px] rounded-full border border-electric-violet/30 animate-pulse"></div>
-              <div className="absolute inset-[-20px] rounded-full border border-neon-cyan/20 animate-pulse delay-700"></div>
-              
-              <div className="w-full h-full rounded-full overflow-hidden border-4 border-soft-white/10 glass relative z-10 shadow-2xl">
-                <img 
-                  src="/asfand.png" 
-                  alt="Asfandyar"
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=Asfandyar&background=0A0F1E&color=7C3AED&size=256&bold=true`;
-                  }}
+            <div className="relative w-56 h-56 md:w-64 md:h-64">
+              <div className="absolute -inset-4 rounded-full bg-primary/15 blur-2xl" />
+              <div className="absolute inset-[-8px] rounded-full border border-primary/25 animate-pulse" />
+              <div className="w-full h-full rounded-full overflow-hidden border-4 border-border glass relative shadow-xl">
+                <Image
+                  src="/asfand.png"
+                  alt={personal.name}
+                  fill
+                  sizes="256px"
+                  className="object-cover"
+                  priority
                 />
               </div>
             </div>
             <div className="text-center">
-              <h3 className="text-2xl font-heading font-bold text-soft-white">Asfandyar</h3>
-              <p className="text-neon-cyan text-sm uppercase tracking-widest font-heading">Full Stack AI Engineer</p>
+              <h3 className="text-2xl font-heading font-bold text-foreground">{personal.name}</h3>
+              <p className="text-primary text-sm uppercase tracking-widest font-heading">{personal.role}</p>
+              <p className="text-muted-foreground text-sm mt-1">{personal.location}</p>
             </div>
           </motion.div>
 
-          {/* Right: Bio and Skill Progress */}
-          <motion.div 
-            initial={{ opacity: 0, x: 50 }}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
             className="lg:w-2/3 space-y-8"
           >
-            <p className="text-xl text-soft-white/70 leading-relaxed font-sans">
-              I specialize in bridging the gap between complex human requirements and autonomous digital systems. 
-              My expertise lies in architecting scalable AI infrastructures using 
-              <span className="text-neon-cyan font-semibold"> LangChain</span>, 
-              <span className="text-electric-violet font-semibold"> RAG</span>, and 
-              <span className="text-neon-cyan font-semibold"> Agentic Workflows</span>.
+            <p className="text-lg md:text-xl text-foreground/80 leading-relaxed font-sans">
+              {personal.summary}
             </p>
-            
-            <div className="space-y-6">
-              {skills.map((skill, index) => (
-                <div key={index} className="space-y-2">
-                  <div className="flex justify-between text-soft-white font-heading font-medium">
-                    <span>{skill.name}</span>
-                    <span>{skill.progress}%</span>
+
+            <div className="grid grid-cols-2 gap-6">
+              {quickStats.map((stat) => {
+                const Icon = statIcons[stat.icon] ?? Calendar;
+                return (
+                  <div key={stat.label} className="glow-card glass rounded-2xl p-5 text-center">
+                    <Icon className="w-4 h-4 text-primary/70 mx-auto mb-2" />
+                    <div className="text-2xl md:text-3xl font-heading font-bold text-primary">
+                      {stat.value}
+                    </div>
+                    <div className="text-xs text-muted-foreground mt-1 uppercase tracking-wide">
+                      {stat.label}
+                    </div>
                   </div>
-                  <div className="h-2 bg-soft-white/5 rounded-full overflow-hidden">
-                    <motion.div 
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${skill.progress}%` }}
-                      transition={{ duration: 1.5, ease: "easeOut" }}
-                      className="h-full bg-gradient-to-r from-electric-violet to-neon-cyan"
-                    />
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </motion.div>
         </div>
