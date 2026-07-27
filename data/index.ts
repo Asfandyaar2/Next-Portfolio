@@ -11,8 +11,7 @@ export const personal = {
   role: "Full Stack AI Engineer",
   tagline:
     "Full Stack AI Engineer | LLMs | AI Workflows Automation | AI Agents | MCP Servers",
-  valueProp:
-    "Building AI SaaS products, AI agents, and workflow automation.",
+  valueProp: "Building AI SaaS products, AI agents, and workflow automation.",
   email: "asfi.official@gmail.com",
   phone: "+92 305 7575018",
   location: "Lahore, Pakistan",
@@ -23,9 +22,10 @@ export const personal = {
 
 export const quickStats = [
   { label: "Years of Experience", value: "6+", icon: "Calendar" },
-  { label: "Active Users Served", value: "10k+", icon: "Users" },
+  { label: "Projects Delivered", value: "20+", icon: "Briefcase" },
+  { label: "AI Solutions Built", value: "15+", icon: "Bot" },
+  { label: "Technologies", value: "25+", icon: "Code2" },
 ];
-
 export const skillCategories = [
   {
     category: "Frontend",
@@ -44,7 +44,14 @@ export const skillCategories = [
   {
     category: "Backend (Node)",
     icon: "Server",
-    stack: ["Node.js", "Express.js", "NestJS", "REST APIs", "Microservices", "WebSockets"],
+    stack: [
+      "Node.js",
+      "Express.js",
+      "NestJS",
+      "REST APIs",
+      "Microservices",
+      "WebSockets",
+    ],
   },
   {
     category: "Backend (Python)",
@@ -75,7 +82,14 @@ export const skillCategories = [
   {
     category: "Automation",
     icon: "Workflow",
-    stack: ["Webhooks", "n8n", "Zapier", "Cron Jobs", "Event-Driven Architecture", "RabbitMQ"],
+    stack: [
+      "Webhooks",
+      "n8n",
+      "Zapier",
+      "Cron Jobs",
+      "Event-Driven Architecture",
+      "RabbitMQ",
+    ],
   },
   {
     category: "Databases",
@@ -102,42 +116,50 @@ export const skillCategories = [
 export const aiExpertise = [
   {
     title: "AI Agents",
-    description: "Autonomous agents that plan, act, and self-correct across multi-step tasks.",
+    description:
+      "Autonomous agents that plan, act, and self-correct across multi-step tasks.",
     icon: "Bot",
   },
   {
     title: "MCP Servers",
-    description: "Model Context Protocol integrations giving LLMs safe, structured access to tools and data.",
+    description:
+      "Model Context Protocol integrations giving LLMs safe, structured access to tools and data.",
     icon: "Server",
   },
   {
     title: "LLMs (GPT-4, Grok)",
-    description: "Production integrations with OpenAI GPT-4 and Grok for reasoning-heavy workloads.",
+    description:
+      "Production integrations with OpenAI GPT-4 and Grok for reasoning-heavy workloads.",
     icon: "Sparkles",
   },
   {
     title: "RAG Pipelines",
-    description: "Retrieval-augmented pipelines that ground model output in your own documents and data.",
+    description:
+      "Retrieval-augmented pipelines that ground model output in your own documents and data.",
     icon: "FileSearch",
   },
   {
     title: "LangChain",
-    description: "Composable chains and tool-calling orchestration for complex LLM workflows.",
+    description:
+      "Composable chains and tool-calling orchestration for complex LLM workflows.",
     icon: "Link2",
   },
   {
     title: "LangGraph",
-    description: "Stateful, graph-based multi-agent orchestration for long-running workflows.",
+    description:
+      "Stateful, graph-based multi-agent orchestration for long-running workflows.",
     icon: "GitBranch",
   },
   {
     title: "AI Workflow Automation",
-    description: "End-to-end automation connecting LLMs to webhooks, cron jobs, and business systems.",
+    description:
+      "End-to-end automation connecting LLMs to webhooks, cron jobs, and business systems.",
     icon: "Zap",
   },
   {
     title: "Guardrails & TTS",
-    description: "Safe, auditable AI output with guardrails, plus natural text-to-speech responses.",
+    description:
+      "Safe, auditable AI output with guardrails, plus natural text-to-speech responses.",
     icon: "ShieldCheck",
   },
 ];
@@ -148,7 +170,14 @@ export const projects = [
     title: "AI Chatbot Platform",
     description:
       "Multi-user intelligent chatbot powered by the Grok API with real-time Q&A, contextual memory across sessions, and continuous fine-tuning loops. A modular prompt-engineering layer enables per-tenant customization without code changes, with TTS output for natural, voice-based responses.",
-    tags: ["Grok API", "Node.js", "MongoDB", "WebSockets", "TTS", "Prompt Engineering"],
+    tags: [
+      "Grok API",
+      "Node.js",
+      "MongoDB",
+      "WebSockets",
+      "TTS",
+      "Prompt Engineering",
+    ],
     metrics: "Sub-second response streaming over WebSockets",
     img: "/chatbot.png",
     imgWidth: 1847,
@@ -168,7 +197,13 @@ export const projects = [
     title: "Algorithmic Trading Bot with AI Strategy",
     description:
       "Live trading platform integrated with the Alpaca API for real-time market data and automated order execution. An AI strategy engine with configurable risk parameters is validated through a backtesting module against historical data, surfaced in a real-time analytics dashboard.",
-    tags: ["Alpaca API", "AI Strategy Engine", "React.js", "Fintech", "Real-time Data"],
+    tags: [
+      "Alpaca API",
+      "AI Strategy Engine",
+      "React.js",
+      "Fintech",
+      "Real-time Data",
+    ],
     metrics: "Real-time P&L tracking, trade history, and live market charts",
     img: "/tradingbot.png",
     imgWidth: 1917,
@@ -179,32 +214,67 @@ export const projects = [
 export const services = [
   {
     title: "AI Chatbots & RAG Systems",
-    description: "OpenAI & Grok-powered chatbots and retrieval-augmented pipelines grounded in your own data.",
+    description:
+      "OpenAI & Grok-powered chatbots and retrieval-augmented pipelines grounded in your own data.",
     icon: "Bot",
-    bullets: ["RAG chatbot development", "OpenAI & Grok API integration", "LangChain & LangGraph agents"],
+    bullets: [
+      "RAG chatbot development",
+      "OpenAI & Grok API integration",
+      "LangChain & LangGraph agents",
+    ],
   },
   {
     title: "AI Agents & Workflow Automation",
-    description: "Autonomous agents and MCP-powered automations that connect LLMs to real business systems.",
+    description:
+      "Autonomous agents and MCP-powered automations that connect LLMs to real business systems.",
     icon: "Workflow",
-    bullets: ["MCP server integration", "n8n & Zapier workflows", "Guardrails & safe AI output"],
+    bullets: [
+      "MCP server integration",
+      "n8n & Zapier workflows",
+      "Guardrails & safe AI output",
+    ],
   },
   {
     title: "Full-Stack SaaS Development",
-    description: "React/Next.js frontends on Node.js/NestJS backends with PostgreSQL and MongoDB.",
+    description:
+      "React/Next.js frontends on Node.js/NestJS backends with PostgreSQL and MongoDB.",
     icon: "Layers",
-    bullets: ["Next.js dashboard builds", "NestJS & Express REST APIs", "PostgreSQL & MongoDB data layer"],
+    bullets: [
+      "Next.js dashboard builds",
+      "NestJS & Express REST APIs",
+      "PostgreSQL & MongoDB data layer",
+    ],
   },
   {
     title: "Third-Party & Cloud Integrations",
-    description: "Payments, messaging, and cloud deployments wired cleanly into your product.",
+    description:
+      "Payments, messaging, and cloud deployments wired cleanly into your product.",
     icon: "Plug",
-    bullets: ["Stripe & Twilio integration", "Meta Graph API & webhooks", "AWS/Docker deployment"],
+    bullets: [
+      "Stripe & Twilio integration",
+      "Meta Graph API & webhooks",
+      "AWS/Docker deployment",
+    ],
   },
 ];
 
 export const socialMedia = [
-  { id: 1, label: "GitHub", icon: "Github", link: "https://github.com/Asfandyaar2" },
-  { id: 2, label: "LinkedIn", icon: "Linkedin", link: "https://www.linkedin.com/in/asfandyar2/" },
-  { id: 3, label: "Email", icon: "Mail", link: "mailto:asfi.official@gmail.com" },
+  {
+    id: 1,
+    label: "GitHub",
+    icon: "Github",
+    link: "https://github.com/Asfandyaar2",
+  },
+  {
+    id: 2,
+    label: "LinkedIn",
+    icon: "Linkedin",
+    link: "https://www.linkedin.com/in/asfandyar2/",
+  },
+  {
+    id: 3,
+    label: "Email",
+    icon: "Mail",
+    link: "mailto:asfi.official@gmail.com",
+  },
 ];
