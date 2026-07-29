@@ -87,7 +87,7 @@ export const Header = ({ navItems, className }: HeaderProps) => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-background/80 backdrop-blur-xl border-b border-border"
+          ? "bg-background border-b border-border shadow-sm"
           : "bg-transparent",
         className
       )}
@@ -178,7 +178,7 @@ export const Header = ({ navItems, className }: HeaderProps) => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden bg-background/95 backdrop-blur-2xl border-t border-border overflow-hidden"
+              className="md:hidden bg-background border-t border-border overflow-hidden"
             >
               <div className="px-6 py-10 space-y-6">
                 {navItems.map((item, index) => {
