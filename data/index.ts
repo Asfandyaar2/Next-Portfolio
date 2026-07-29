@@ -75,23 +75,6 @@ export const skillCategories = [
     ],
   },
   {
-    category: "Vector DB & Search",
-    icon: "Database",
-    stack: ["Typesense", "pgvector", "Chroma"],
-  },
-  {
-    category: "Automation",
-    icon: "Workflow",
-    stack: [
-      "Webhooks",
-      "n8n",
-      "Zapier",
-      "Cron Jobs",
-      "Event-Driven Architecture",
-      "RabbitMQ",
-    ],
-  },
-  {
     category: "Databases",
     icon: "HardDrive",
     stack: ["MongoDB", "PostgreSQL", "Firebase", "Redis"],
@@ -167,47 +150,232 @@ export const aiExpertise = [
 export const projects = [
   {
     id: 1,
-    title: "AI Chatbot Platform",
-    description:
-      "Multi-user intelligent chatbot powered by the Grok API with real-time Q&A, contextual memory across sessions, and continuous fine-tuning loops. A modular prompt-engineering layer enables per-tenant customization without code changes, with TTS output for natural, voice-based responses.",
-    tags: [
-      "Grok API",
-      "Node.js",
-      "MongoDB",
-      "WebSockets",
-      "TTS",
-      "Prompt Engineering",
+    slug: "vocaliv",
+    title: "Vocaliv",
+    subtitle: "AI Operational Layer for Training Delivery & Voice Coaching",
+    tagline:
+      "24/7 voice-to-voice AI coaching, automated PDF-to-course creation, and multi-language corporate training.",
+    overview:
+      "Training providers lose 40-60% of trainer time to repetitive support queries and struggle to scale delivery without adding headcount. Vocaliv acts as an AI operational layer and interactive 24/7 tutor — auto-generating structured courses from uploaded documents, delivering real-time voice-to-voice coaching in multiple languages, and offering custom voice cloning for personalized, adaptive learning paths.",
+    liveUrl: "https://vocaliv.com/",
+    images: ["/projects/vocaliv-1.png", "/projects/vocaliv-2.png"],
+    tags: ["Voice AI", "LLM Document Parser", "Next.js", "Multi-language NLP"],
+    keyFeatures: [
+      {
+        title: "Smart AI Course Creation (PDF to Course)",
+        description:
+          "Analyzes training documents to generate complete course outlines, modules, and quizzes in minutes.",
+      },
+      {
+        title: "Interactive AI Coach (Voice-to-Voice)",
+        description:
+          "Real-time conversational learning with 24/7 Q&A and multilingual support (English, French, Arabic, Spanish, Urdu).",
+      },
+      {
+        title: "Custom AI Voice Cloning",
+        description:
+          "Trainers clone their own voice to personalize course delivery with adjustable tone and pacing.",
+      },
+      {
+        title: "Adaptive Learning Paths",
+        description:
+          "Dynamically tailors quizzes and progression based on real-time trainee self-assessments.",
+      },
+      {
+        title: "LMS & Classroom Integrations",
+        description: "Integrates with Canvas, Moodle, and Google Classroom.",
+      },
     ],
-    metrics: "Sub-second response streaming over WebSockets",
-    img: "/chatbot.png",
-    imgWidth: 1847,
-    imgHeight: 915,
+    techStack: [
+      { category: "AI & Voice Engine", items: ["Voice-to-Voice Conversational AI", "AI Voice Cloning", "LLM Document Parser", "Multi-language NLP"] },
+      { category: "Frontend & Web", items: ["React / Next.js", "Web Audio API", "Tailwind CSS"] },
+      { category: "Integrations", items: ["Canvas, Moodle, Google Classroom", "RESTful API & Webhooks"] },
+    ],
+    metrics: [
+      { label: "Trainer Capacity", value: "3x", sourceText: "30 → 90 trainees per trainer" },
+      { label: "Support Automated", value: "70%+", sourceText: "Handled instantly, 24/7" },
+      { label: "Time Recovered", value: "15-25 hrs", sourceText: "Per trainer, weekly" },
+    ],
   },
   {
     id: 2,
-    title: "RAG Knowledge Base System",
-    description:
-      "End-to-end ingestion pipeline — chunking, embedding, and vector storage in Pinecone, paired with Typesense for fast keyword search — supporting PDFs, Word docs, and web content. GPT-4-powered Q&A over private company documents with source attribution and confidence scoring.",
-    tags: ["RAG", "Pinecone", "Typesense", "GPT-4", "Document AI"],
-    metrics: "10,000+ document queries/month at sub-2-second response times",
-    placeholder: true as const,
+    slug: "nowchat",
+    title: "NowChat",
+    subtitle: "AI-Powered Customer Engagement & Conversational Automation",
+    tagline:
+      "A unified messaging and AI chatbot platform automating customer support, sales inquiries, and lead generation in real time.",
+    overview:
+      "NowChat streamlines customer interactions across web and messaging channels. By pairing natural language processing with automated workflows, it delivers 24/7 instant support, qualifies leads automatically, and cuts support ticket response times — all from a single unified inbox.",
+    liveUrl: "https://nowchat.io/",
+    images: ["/projects/nowchat-1.png", "/projects/nowchat-2.png"],
+    tags: ["LLM / NLP", "WebSockets", "Next.js", "CRM Sync"],
+    keyFeatures: [
+      {
+        title: "Real-Time AI Chat Assistant",
+        description: "24/7 automated bot handling FAQs, lead capture, and instant customer queries with high precision.",
+      },
+      {
+        title: "Multi-Channel Messaging Hub",
+        description: "Unified inbox connecting web chat, social messaging, and SMS into a single dashboard.",
+      },
+      {
+        title: "Custom Bot Builder & Workflows",
+        description: "Visual, code-free builder for conversation flows, routing rules, and fallback triggers.",
+      },
+      {
+        title: "Lead Qualification & CRM Sync",
+        description: "Automated data capture during live conversations, exported directly to CRM systems.",
+      },
+      {
+        title: "Conversation Analytics",
+        description: "Dashboard tracking chat metrics, resolution rates, sentiment, and peak activity times.",
+      },
+    ],
+    techStack: [
+      { category: "Frontend", items: ["React", "Next.js", "Tailwind CSS"] },
+      { category: "Backend & AI", items: ["Node.js / Express", "LLM / NLP API", "WebSockets"] },
+      { category: "Data & Security", items: ["PostgreSQL / MongoDB", "JWT Auth", "SSL / Encryption"] },
+    ],
+    metrics: [
+      { label: "Response Time", value: "< 5 sec", sourceText: "Instant AI handling, 24/7" },
+      { label: "Support Automated", value: "70%+", sourceText: "Routine inquiries, no human needed" },
+      { label: "Uptime", value: "99.9%", sourceText: "High-availability messaging service" },
+    ],
   },
   {
     id: 3,
-    title: "Algorithmic Trading Bot with AI Strategy",
-    description:
-      "Live trading platform integrated with the Alpaca API for real-time market data and automated order execution. An AI strategy engine with configurable risk parameters is validated through a backtesting module against historical data, surfaced in a real-time analytics dashboard.",
-    tags: [
-      "Alpaca API",
-      "AI Strategy Engine",
-      "React.js",
-      "Fintech",
-      "Real-time Data",
+    slug: "tradingbot-ai",
+    title: "TradingBot AI",
+    subtitle: "AI-Powered Automated Trading & Portfolio Intelligence",
+    tagline:
+      "An autonomous quantitative trading platform delivering real-time market analysis, automated execution, and risk management.",
+    overview:
+      "TradingBot AI helps traders eliminate emotional bias in financial markets, combining real-time price tracking, algorithmic signal generation, and automated portfolio management behind a secure, authentication-backed interface.",
+    liveUrl: "https://tradingbot-ai2.vercel.app/auth",
+    images: ["/projects/tradingbot-1.webp", "/projects/tradingbot-2.png"],
+    tags: ["AI Strategy Engine", "Real-time Data", "Next.js", "Fintech"],
+    keyFeatures: [
+      {
+        title: "Algorithmic Trade Execution",
+        description: "Automated buy/sell triggers based on technical indicators and AI market sentiment analysis.",
+      },
+      {
+        title: "Real-Time Portfolio Tracking",
+        description: "Interactive dashboard monitoring active positions, P&L performance, and asset allocation.",
+      },
+      {
+        title: "Risk Management & Stop-Loss",
+        description: "Dynamic stop-loss and take-profit automation to protect capital during volatility.",
+      },
+      {
+        title: "Seamless Authentication",
+        description: "Secure multi-provider auth for personalized dashboards and sandbox testing.",
+      },
+      {
+        title: "Market Sentiment Analytics",
+        description: "AI-driven signal analysis identifying high-probability entry and exit points.",
+      },
     ],
-    metrics: "Real-time P&L tracking, trade history, and live market charts",
-    img: "/tradingbot.png",
-    imgWidth: 1917,
-    imgHeight: 902,
+    techStack: [
+      { category: "Frontend", items: ["React", "Next.js", "Tailwind CSS"] },
+      { category: "Auth & Security", items: ["NextAuth.js", "JWT Encryption"] },
+      { category: "Data & Hosting", items: ["RESTful APIs", "WebSockets", "Vercel"] },
+    ],
+    metrics: [
+      { label: "Execution Latency", value: "Sub-second", sourceText: "Real-time signal processing" },
+      { label: "Risk Mitigation", value: "100%", sourceText: "Automated stop-loss protection" },
+      { label: "Uptime", value: "99.9%", sourceText: "Vercel serverless edge network" },
+    ],
+  },
+  {
+    id: 4,
+    slug: "permiscope",
+    title: "PermisScope",
+    subtitle: "Smart Driving School Comparison & Analytics Platform",
+    tagline:
+      "A real-time aggregator helping users compare driving schools across France by price, success rates, and verified reviews.",
+    overview:
+      "A French driving license costs between €1,200-2,500, with wide variance between schools. PermisScope gives a centralized, transparent platform to compare local schools by verified Google reviews, official success rates, CPF funding eligibility, and exam wait times.",
+    liveUrl: "https://permiscope.fr/",
+    images: ["/projects/permiscope-1.png", "/projects/permiscope-2.png"],
+    tags: ["React", "Analytics", "SEO", "Marketplace"],
+    keyFeatures: [
+      {
+        title: "Real-Time City-Wise Comparison",
+        description: "Dynamic geo-search across major French cities to evaluate local driving schools.",
+      },
+      {
+        title: "Transparent Metrics & Analytics",
+        description: "Live dashboards showing average savings, pass rates, and exam waiting periods.",
+      },
+      {
+        title: "CPF / Qualiopi Filter",
+        description: "Instant filtering for government-funded options accepting CPF financing.",
+      },
+      {
+        title: "Dual Portal Architecture",
+        description: "Dedicated portals for students (search/compare) and school owners (lead gen & profiles).",
+      },
+      {
+        title: "Verified Reviews Aggregator",
+        description: "Integrates verified student reviews and Google feedback for maximum trust.",
+      },
+    ],
+    techStack: [
+      { category: "Frontend", items: ["React", "React Router", "Lit-element", "Tailwind CSS"] },
+      { category: "Hosting", items: ["Netlify"] },
+      { category: "Analytics & SEO", items: ["Google Analytics", "Google Tag Manager", "Open Graph"] },
+    ],
+    metrics: [
+      { label: "Avg. Savings", value: "€500", sourceText: "Average savings per student" },
+      { label: "Schools Onboarded", value: "150+", sourceText: "Across major French cities" },
+      { label: "Satisfied Students", value: "5,000+", sourceText: "98% satisfaction rate" },
+    ],
+  },
+  {
+    id: 5,
+    slug: "ontezo",
+    title: "Ontezo",
+    subtitle: "Enterprise Digital Transformation & Software Engineering Platform",
+    tagline:
+      "A full-cycle software agency platform delivering tailored web, mobile, and cloud software solutions.",
+    overview:
+      "Ontezo is a technology solutions and custom software engineering platform helping modern businesses scale digital operations — spanning UI/UX design, cloud-native web applications, enterprise software development, and API integration services.",
+    liveUrl: "https://ontezo.com/",
+    images: ["/projects/ontezo-1.png", "/projects/ontezo-2.png"],
+    tags: ["Next.js", "Cloud & DevOps", "API Integrations"],
+    keyFeatures: [
+      {
+        title: "Custom Web & Mobile Development",
+        description: "Scalable, high-performance applications built with modern frontend and backend architectures.",
+      },
+      {
+        title: "UI/UX Design Systems",
+        description: "User-centric interface design, wireframing, and prototyping optimized for conversion.",
+      },
+      {
+        title: "Cloud Infrastructure & DevOps",
+        description: "Automated deployment pipelines and cloud infrastructure management for reliability.",
+      },
+      {
+        title: "Enterprise API & Systems Integration",
+        description: "Seamless integration with third-party software, payment gateways, and databases.",
+      },
+      {
+        title: "Digital Transformation Consulting",
+        description: "Technical strategy and legacy system modernization for scaling businesses.",
+      },
+    ],
+    techStack: [
+      { category: "Frontend", items: ["React", "Next.js", "Tailwind CSS"] },
+      { category: "Backend & Cloud", items: ["Node.js / Express", "PostgreSQL / MongoDB", "AWS / Docker"] },
+      { category: "Design & Workflow", items: ["Figma", "RESTful APIs", "CI/CD Pipelines"] },
+    ],
+    metrics: [
+      { label: "Client Satisfaction", value: "98%", sourceText: "Across global client engagements" },
+      { label: "Project Success", value: "100%", sourceText: "On-time, within-scope delivery" },
+      { label: "Uptime", value: "99.9%", sourceText: "Cloud-native infrastructure" },
+    ],
   },
 ];
 
