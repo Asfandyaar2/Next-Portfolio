@@ -1,8 +1,11 @@
 "use client";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
+import { Mail, MapPin, ArrowUpRight } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 import { personal } from "@/data";
+import { RevealMask } from "@/components/RevealMask";
+import { MagneticButton } from "@/components/MagneticButton";
 
 const ContactCTA = () => {
   return (
@@ -17,8 +20,10 @@ const ContactCTA = () => {
           transition={{ duration: 0.7 }}
           className="max-w-2xl mx-auto text-center space-y-6"
         >
-          <h2 className="heading">
-            Let&apos;s Build <span className="text-primary">Together</span>
+          <h2 className="heading overflow-hidden">
+            <RevealMask>
+              Let&apos;s Build <span className="text-primary">Together</span>
+            </RevealMask>
           </h2>
           <p className="text-muted-foreground text-lg md:text-xl">
             Have an AI product, workflow, or full-stack build in mind? I&apos;m currently available
@@ -26,19 +31,28 @@ const ContactCTA = () => {
           </p>
 
           <div className="pt-4 flex justify-center">
-            <a
-              href={`mailto:${personal.email}`}
-              className="group inline-flex items-center gap-3 px-8 py-5 bg-primary text-primary-foreground font-semibold rounded-2xl btn-glow hover:scale-[1.03] active:scale-95 transition-all text-lg"
-            >
-              <Mail className="w-5 h-5" />
-              {personal.email}
-              <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
+            <MagneticButton strength={0.2}>
+              <a
+                href={`mailto:${personal.email}`}
+                className="group inline-flex items-center gap-3 px-8 py-5 bg-primary text-primary-foreground font-semibold rounded-2xl btn-glow hover:scale-[1.03] active:scale-95 transition-all text-lg"
+              >
+                <Mail className="w-5 h-5" />
+                {personal.email}
+                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+            </MagneticButton>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 pt-2 text-sm text-muted-foreground">
-            <a href={`tel:${personal.phone.replace(/\s+/g, "")}`} className="flex items-center gap-2 hover:text-primary transition-colors">
-              <Phone className="w-4 h-4" />
+            <a
+              href={`https://wa.me/${personal.whatsapp}?text=${encodeURIComponent(
+                `Hi ${personal.name}, I found your portfolio and would like to talk about a project.`
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 hover:text-primary transition-colors"
+            >
+              <FaWhatsapp className="w-4 h-4" />
               {personal.phone}
             </a>
             <span className="flex items-center gap-2">

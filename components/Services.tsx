@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { type LucideIcon, Bot, Workflow, Layers, Plug } from "lucide-react";
 
 import { services } from "@/data";
+import { RevealMask } from "@/components/RevealMask";
 
 const iconMap: Record<string, LucideIcon> = {
   Bot,
@@ -15,15 +16,11 @@ const Services = () => {
   return (
     <section id="services" className="py-12 md:py-20 bg-background">
       <div className="container mx-auto px-6">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="heading mb-8"
-        >
-          What I <span className="text-primary">Offer</span>
-        </motion.h2>
+        <h2 className="heading mb-8 overflow-hidden">
+          <RevealMask>
+            What I <span className="text-primary">Offer</span>
+          </RevealMask>
+        </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {services.map((service, index) => {
@@ -40,9 +37,13 @@ const Services = () => {
                 className="glass glow-card rounded-2xl p-5 sm:p-7"
               >
                 <div className="flex items-start gap-3 sm:gap-4 mb-5">
-                  <div className="p-2.5 sm:p-3 w-fit rounded-xl bg-primary/10 text-primary shrink-0">
+                  <motion.div
+                    whileHover={{ rotate: 10, scale: 1.12 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                    className="p-2.5 sm:p-3 w-fit rounded-xl bg-primary/10 text-primary shrink-0"
+                  >
                     <Icon size={20} />
-                  </div>
+                  </motion.div>
                   <div className="min-w-0">
                     <h3 className="text-base sm:text-lg font-heading font-bold text-foreground leading-snug">
                       {service.title}

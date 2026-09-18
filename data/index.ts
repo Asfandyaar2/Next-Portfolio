@@ -14,15 +14,16 @@ export const personal = {
   valueProp: "Building AI SaaS products, AI agents, and workflow automation.",
   email: "asfi.official@gmail.com",
   phone: "+92 305 7575018",
+  whatsapp: "923057575018",
   location: "Lahore, Pakistan",
   summary:
-    "Full Stack AI Engineer with 6+ years of hands-on experience architecting and shipping production-grade AI applications from the ground up. Specializes in turning large language models — including OpenAI GPT-4 and Grok — into reliable, real-world systems through RAG pipelines, agentic AI workflows built with LangChain and LangGraph, MCP Server integrations, and strong guardrails for safe, predictable AI behavior. Backend expertise in Node.js, NestJS, and PostgreSQL enables fast delivery without cutting corners.",
-  yearsExperience: 6,
+    "Full Stack AI Engineer with 8+ years of hands-on experience architecting and shipping production-grade AI applications from the ground up. Specializes in turning large language models — including OpenAI GPT-4 and Grok — into reliable, real-world systems through RAG pipelines, agentic AI workflows built with LangChain and LangGraph, MCP Server integrations, and strong guardrails for safe, predictable AI behavior. Backend expertise in Node.js, NestJS, and PostgreSQL enables fast delivery without cutting corners.",
+  yearsExperience: 8,
 };
 
 export const quickStats = [
-  { label: "Years of Experience", value: "6+", icon: "Calendar" },
-  { label: "Projects Delivered", value: "20+", icon: "Briefcase" },
+  { label: "Years of Experience", value: "8+", icon: "Calendar" },
+  { label: "Projects Delivered", value: "30+", icon: "Briefcase" },
   { label: "AI Solutions Built", value: "15+", icon: "Bot" },
   { label: "Technologies", value: "25+", icon: "Code2" },
 ];

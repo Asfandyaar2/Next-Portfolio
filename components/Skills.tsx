@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 
 import { skillCategories } from "@/data";
+import { RevealMask } from "@/components/RevealMask";
 
 const iconMap: Record<string, LucideIcon> = {
   Code2,
@@ -38,15 +39,11 @@ const Skills = () => {
     >
       <Sparkles className="absolute top-16 right-10 w-7 h-7 text-primary/20 pointer-events-none hidden sm:block" />
       <div className="container mx-auto px-6">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="heading mb-4"
-        >
-          Skills & <span className="text-primary">Stack</span>
-        </motion.h2>
+        <h2 className="heading mb-4 overflow-hidden">
+          <RevealMask>
+            Skills & <span className="text-primary">Stack</span>
+          </RevealMask>
+        </h2>
         <p className="subheading mb-8">
           A full-stack toolkit built for shipping production-grade AI systems
           end to end.
@@ -63,12 +60,16 @@ const Skills = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: (index % 10) * 0.04 }}
-                className="flex flex-col sm:flex-row sm:items-center gap-4 px-6 py-5 hover:bg-muted/40 transition-colors duration-300"
+                className="group flex flex-col sm:flex-row sm:items-center gap-4 px-6 py-5 hover:bg-muted/40 transition-colors duration-300"
               >
                 <div className="flex items-center gap-3 sm:w-64 shrink-0">
-                  <div className="p-2 rounded-lg bg-primary/10 text-primary shrink-0">
+                  <motion.div
+                    whileHover={{ rotate: 12, scale: 1.15 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                    className="p-2 rounded-lg bg-primary/10 text-primary shrink-0"
+                  >
                     <Icon size={18} />
-                  </div>
+                  </motion.div>
                   <h3 className="text-sm font-heading font-bold text-foreground">
                     {skill.category}
                   </h3>
@@ -78,7 +79,7 @@ const Skills = () => {
                   {skill.stack.map((tech) => (
                     <span
                       key={tech}
-                      className="text-xs px-3 py-1.5 rounded-full bg-muted text-muted-foreground"
+                      className="text-xs px-3 py-1.5 rounded-full bg-muted text-muted-foreground transition-colors duration-300 group-hover:bg-primary/10 group-hover:text-primary"
                     >
                       {tech}
                     </span>

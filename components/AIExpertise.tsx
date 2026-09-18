@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 
 import { aiExpertise } from "@/data";
+import { RevealMask } from "@/components/RevealMask";
 
 const iconMap: Record<string, LucideIcon> = {
   Bot,
@@ -39,8 +40,10 @@ const AIExpertise = () => {
           <span className="inline-block text-xs uppercase tracking-[0.25em] text-primary font-semibold mb-4">
             Spotlight
           </span>
-          <h2 className="heading">
-            AI <span className="text-primary">Expertise</span>
+          <h2 className="heading overflow-hidden">
+            <RevealMask>
+              AI <span className="text-primary">Expertise</span>
+            </RevealMask>
           </h2>
         </motion.div>
 
@@ -55,11 +58,15 @@ const AIExpertise = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: (index % 4) * 0.08 }}
-                className="glow-card rounded-2xl p-6 bg-card hover:-translate-y-1 transition-all duration-300"
+                className="group glow-card rounded-2xl p-6 bg-card hover:-translate-y-1 transition-all duration-300"
               >
-                <div className="p-2.5 w-fit rounded-xl bg-primary text-primary-foreground mb-5">
+                <motion.div
+                  whileHover={{ rotate: -10, scale: 1.12 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                  className="p-2.5 w-fit rounded-xl bg-primary text-primary-foreground mb-5"
+                >
                   <Icon size={20} />
-                </div>
+                </motion.div>
                 <h3 className="text-base font-heading font-bold text-foreground mb-2">
                   {item.title}
                 </h3>

@@ -1,11 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { useGSAP } from "@gsap/react";
 import Link from "next/link";
 import { type LucideIcon, ArrowRight, Github, Linkedin, Mail, Sparkles } from "lucide-react";
 
 import { personal, socialMedia } from "@/data";
+import { MagneticButton } from "@/components/MagneticButton";
+import { gsap } from "@/lib/gsap";
 
 const roles = ["Full Stack AI Engineer", "LLMs & RAG", "AI Agents", "MCP Servers"];
 
@@ -20,6 +23,78 @@ const Hero = () => {
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [speed, setSpeed] = useState(150);
+
+  const sectionRef = useRef<HTMLElement>(null);
+  const bgLayerRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+
+      mm.add(
+        {
+          cinematic: "(min-width: 768px) and (prefers-reduced-motion: no-preference)",
+          reduced: "(max-width: 767px), (prefers-reduced-motion: reduce)",
+        },
+        (context) => {
+          const { cinematic } = context.conditions as { cinematic: boolean };
+
+          if (cinematic) {
+            // Pinned cinematic pull-back: hero content recedes and the
+            // background zooms as the next section rises over it.
+            gsap.timeline({
+              scrollTrigger: {
+                trigger: sectionRef.current,
+                start: "top top",
+                end: "+=90%",
+                scrub: 0.6,
+                pin: true,
+                pinSpacing: true,
+              },
+            })
+              .to(contentRef.current, { scale: 0.86, y: -60, opacity: 0, ease: "none" }, 0)
+              .to(bgLayerRef.current, { scale: 1.35, opacity: 0.5, ease: "none" }, 0);
+          } else {
+            // Mobile / reduced-motion: cheap opacity fade, no pin.
+            gsap.to(contentRef.current, {
+              opacity: 0.4,
+              yPercent: -8,
+              ease: "none",
+              scrollTrigger: {
+                trigger: sectionRef.current,
+                start: "top top",
+                end: "bottom top",
+                scrub: true,
+              },
+            });
+          }
+        }
+      );
+
+      return () => mm.revert();
+    },
+    { scope: sectionRef }
+  );
+
+  const spotlightX = useMotionValue(0);
+  const spotlightY = useMotionValue(0);
+  const springSpotlightX = useSpring(spotlightX, { stiffness: 80, damping: 20 });
+  const springSpotlightY = useSpring(spotlightY, { stiffness: 80, damping: 20 });
+  const spotlightBackground = useTransform(
+    [springSpotlightX, springSpotlightY],
+    ([sx, sy]) =>
+      `radial-gradient(600px circle at ${sx}px ${sy}px, rgb(var(--primary-rgb) / 0.18), transparent 70%)`
+  );
+
+  useEffect(() => {
+    const handlePointerMove = (e: PointerEvent) => {
+      spotlightX.set(e.clientX);
+      spotlightY.set(e.clientY);
+    };
+    window.addEventListener("pointermove", handlePointerMove);
+    return () => window.removeEventListener("pointermove", handlePointerMove);
+  }, [spotlightX, spotlightY]);
 
   useEffect(() => {
     const handleType = () => {
@@ -48,11 +123,12 @@ const Hero = () => {
 
   return (
     <section
+      ref={sectionRef}
       className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-background"
       id="home"
     >
       {/* Spotlight glow + soft floating gradient blobs — deterministic, slow */}
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+      <div ref={bgLayerRef} className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <div className="absolute inset-0 spotlight-bg" />
         <motion.div
           className="absolute -top-32 -left-24 w-[34rem] h-[34rem] rounded-full bg-primary/25 blur-[120px]"
@@ -64,13 +140,20 @@ const Hero = () => {
           animate={{ x: [0, -30, 0], y: [0, -20, 0] }}
           transition={{ duration: 26, repeat: Infinity, ease: "easeInOut", delay: 2 }}
         />
+        <motion.div
+          className="absolute inset-0 hidden md:block"
+          style={{ background: spotlightBackground }}
+        />
       </div>
 
       {/* Decorative accent */}
       <Sparkles className="absolute bottom-10 right-10 w-8 h-8 text-primary/25 pointer-events-none hidden sm:block" />
 
 
-      <div className="relative z-10 container flex flex-col items-center justify-center text-center px-4 py-32">
+      <div
+        ref={contentRef}
+        className="relative z-10 container flex flex-col items-center justify-center text-center px-4 py-32"
+      >
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -92,7 +175,7 @@ const Hero = () => {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-foreground mb-5 leading-tight"
         >
-          Hi, I&apos;m <span className="text-primary">{personal.name}</span>
+          Hi, I&apos;m <span className="text-gradient-animate">{personal.name}</span>
         </motion.h1>
 
         <div className="h-10 md:h-12 flex items-center mb-8">
@@ -119,17 +202,21 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.35 }}
           className="flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
-          <Link href="#projects">
-            <button className="group relative px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-xl btn-glow transition-all hover:scale-[1.03] active:scale-95 flex items-center gap-2">
-              View Projects
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </button>
-          </Link>
-          <Link href="#contact">
-            <button className="px-8 py-4 border border-border glass rounded-xl text-foreground font-semibold transition-all hover:border-primary/40 hover:scale-[1.03] active:scale-95">
-              Contact Me
-            </button>
-          </Link>
+          <MagneticButton>
+            <Link href="#projects">
+              <button className="group relative px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-xl btn-glow transition-all hover:scale-[1.03] active:scale-95 flex items-center gap-2">
+                View Projects
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </button>
+            </Link>
+          </MagneticButton>
+          <MagneticButton>
+            <Link href="#contact">
+              <button className="px-8 py-4 border border-border glass rounded-xl text-foreground font-semibold transition-all hover:border-primary/40 hover:scale-[1.03] active:scale-95">
+                Contact Me
+              </button>
+            </Link>
+          </MagneticButton>
         </motion.div>
 
         <motion.div
@@ -141,16 +228,17 @@ const Hero = () => {
           {socialMedia.map((social) => {
             const Icon = socialIcons[social.icon] ?? Mail;
             return (
-              <a
-                key={social.id}
-                href={social.link}
-                target={social.link.startsWith("mailto:") ? undefined : "_blank"}
-                rel="noopener noreferrer"
-                aria-label={social.label}
-                className="w-10 h-10 flex items-center justify-center rounded-full border border-border text-muted-foreground hover:text-primary hover:border-primary/40 transition-colors"
-              >
-                <Icon className="w-4 h-4" />
-              </a>
+              <MagneticButton key={social.id} strength={0.5}>
+                <a
+                  href={social.link}
+                  target={social.link.startsWith("mailto:") ? undefined : "_blank"}
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="w-10 h-10 flex items-center justify-center rounded-full border border-border text-muted-foreground hover:text-primary hover:border-primary/40 hover:shadow-[0_0_20px_rgb(var(--primary-rgb)/0.35)] transition-all"
+                >
+                  <Icon className="w-4 h-4" />
+                </a>
+              </MagneticButton>
             );
           })}
         </motion.div>
